@@ -1,0 +1,72 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragment.MyFragment">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="18sp"
+        tools:text="hehe" />
+
+    <FrameLayout
+        android:id="@+id/child_content"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_margin="4dp"
+        android:layout_weight="1" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/colorPrimary" />
+
+    <RadioGroup
+        android:id="@+id/rg_interceptor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_add_child"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="ADD" />
+
+        <Button
+            android:id="@+id/btn_replace_child"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="REPL" />
+
+        <RadioButton
+            android:id="@+id/rb_interceptor_yes"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="YES" />
+
+        <RadioButton
+            android:id="@+id/rb_interceptor_no"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:checked="true"
+            android:text="NO" />
+
+        <Button
+            android:id="@+id/btn_pop"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="POP" />
+    </RadioGroup>
+
+
+</LinearLayout>
