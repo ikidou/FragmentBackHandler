@@ -10,18 +10,18 @@ FragmentBackHandler 是一个 Fragment拦截Back键的一个库，仅需两步�
 ```gradle
 allprojects {
 	repositories {
-		...
+	    jcenter()
 		maven { url "https://jitpack.io" }
 	}
 }
 dependencies {
-    compile 'com.github.ikidou:fragmentbackhandler:1.0'
+    compile 'com.github.ikidou:FragmentBackHandler:1.0'
 }
 ```
 
 ## Usage
 
-1. 在Activity中覆盖`onBackPressed()`方法
+1、 在Activity中覆盖`onBackPressed()`方法
 ```java
 public class MyActivity extends FragmentActivity {
     @Override
@@ -33,26 +33,40 @@ public class MyActivity extends FragmentActivity {
 }
 ```
 
-2. 让需要拦截Back键的Fragment及父Fragment继承`BackHandledFragment` 或实现 `FragmentBackHandler`
-
-```java
-public class MyFragment extends BackHandledFragment{
-    @Override
-    public boolean interceptBackPressed() {
-        // TODO
-        return super.interceptBackPressed();
-    }
-}
-```
-
-或者
+2、实现 `FragmentBackHandler`
 
 ```java
 public class MyFragment extends Fragment implements FragmentBackHandler {
     @Override
     public boolean onBackPressed() {
-        //如果该Fragment的子Fragment需要处理back键，则该句不可省略。
-        return FragmentBackHandler.Helper.handleBackPress(this);
+        if (handleBackPressed) {
+            //外理返回键
+            return true;
+        } else {
+            // 如果不包含子Fragment
+            // 或子Fragment没有外理back需求
+            // 可如直接 return false;
+            return FragmentBackHandler.Helper.handleBackPress(this);
+        }
+    }
+}
+```
+
+或让需要拦截Back键的Fragment及父Fragment继承`BackHandledFragment`
+
+```java
+// [推荐] 适合所有Fragment，只要需要栏截时return true即可，其它的无需关心。
+// 当然你也可以让你的BaseFragment 继承 BackHandledFragment
+public class MyFragment extends BackHandledFragment {
+    // 如果return false 将自动调用FragmentBackHandler.Helper.handleBackPress(this);
+    @Override
+    public boolean interceptBackPressed() {
+        if (handleBackPressed) {
+            //外理返回键
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 ```
