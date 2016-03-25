@@ -21,7 +21,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.widget.Toast;
 
-import com.github.ikidou.fragmentBackHandler.FragmentBackHandler;
+import com.github.ikidou.fragmentBackHandler.BackHandlerHelper;
 
 public class ViewPagerActivity extends FragmentActivity {
     private long lastBackPress;
@@ -37,7 +37,7 @@ public class ViewPagerActivity extends FragmentActivity {
 
     @Override
     public void onBackPressed() {
-        if (!FragmentBackHandler.Helper.handleBackPress(viewPager)) {
+        if (!BackHandlerHelper.handleBackPress(viewPager)) {
             if (System.currentTimeMillis() - lastBackPress < 1000) {
                 super.onBackPressed();
             } else {

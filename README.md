@@ -5,7 +5,8 @@
 FragmentBackHandler 是一个 Fragment拦截Back键的一个库，仅需两步即可搞定，同时支持ViewPager、多Fragment以及Fragment嵌套。
 
 详细内容参见Blog [两步搞定Fragment的返回键](http://www.jianshu.com/p/fff1ef649fc0)
-## Download
+## Download 
+[jar](https://jitpack.io/com/github/ikidou/FragmentBackHandler/2.0/FragmentBackHandler-2.0.jar) or [source](https://jitpack.io/com/github/ikidou/FragmentBackHandler/2.0/FragmentBackHandler-2.0-sources.jar)
 
 ```gradle
 allprojects {
@@ -15,7 +16,7 @@ allprojects {
 	}
 }
 dependencies {
-    compile 'com.github.ikidou:FragmentBackHandler:1.1'
+    compile 'com.github.ikidou:FragmentBackHandler:2.0'
 }
 ```
 
@@ -26,7 +27,7 @@ dependencies {
 public class MyActivity extends FragmentActivity {
     @Override
     public void onBackPressed() {
-        if (!FragmentBackHandler.Helper.handleBackPress(this)) {
+        if (!BackHandlerHelper.handleBackPress(this)) {
             super.onBackPressed();
         }
     }
@@ -47,7 +48,7 @@ public class MyFragment extends Fragment implements FragmentBackHandler {
             // 或子Fragment没有外理back需求
             // 可如直接 return false;
             // 注：如果Fragment/Activity 中使用ViewPager 用 viewPager 代替 this
-            return FragmentBackHandler.Helper.handleBackPress(this);
+            return BackHandlerHelper.handleBackPress(this);
         }
     }
 }
@@ -59,7 +60,7 @@ public class MyFragment extends Fragment implements FragmentBackHandler {
 // [推荐] 适合所有Fragment，只要需要栏截时return true即可，其它的无需关心。
 // 当然你也可以让你的BaseFragment 继承 BackHandledFragment
 public class MyFragment extends BackHandledFragment {
-    // 如果return false 将自动调用FragmentBackHandler.Helper.handleBackPress(this);
+    // 如果return false 将自动调用 BackHandlerHelper.handleBackPress(this);
     @Override
     public boolean interceptBackPressed() {
         if (handleBackPressed) {

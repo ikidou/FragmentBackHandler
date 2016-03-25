@@ -20,7 +20,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.widget.Toast;
 
-import com.github.ikidou.fragmentBackHandler.FragmentBackHandler;
+import com.github.ikidou.fragmentBackHandler.BackHandlerHelper;
 
 
 public class MyActivity extends FragmentActivity {
@@ -39,7 +39,7 @@ public class MyActivity extends FragmentActivity {
 
     @Override
     public void onBackPressed() {
-        if (!FragmentBackHandler.Helper.handleBackPress(this)) {
+        if (!BackHandlerHelper.handleBackPress(this)) {
             if (System.currentTimeMillis() - lastBackPress < 1000) {
                 super.onBackPressed();
             } else {

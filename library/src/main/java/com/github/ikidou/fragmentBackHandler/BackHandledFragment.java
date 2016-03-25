@@ -28,8 +28,8 @@ public abstract class BackHandledFragment extends Fragment implements FragmentBa
     public final boolean onBackPressed() {
         return interceptBackPressed()
                 || (getBackHandleViewPager() == null
-                ? Helper.handleBackPress(this)
-                : Helper.handleBackPress(getBackHandleViewPager()));
+                ? BackHandlerHelper.handleBackPress(this)
+                : BackHandlerHelper.handleBackPress(getBackHandleViewPager()));
     }
 
     public boolean interceptBackPressed() {

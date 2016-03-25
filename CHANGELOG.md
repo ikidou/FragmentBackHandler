@@ -1,3 +1,6 @@
+## 2.0
+- FragmentBackHandler.Helper -> BackHandlerHelper
+
 ## 1.1
 - `FragmentBackHandler.Helper` 添加 `handleBackPress(ViewPager)` 方法。解决ViewPager中的Fragment不能正确拦截Back键的问题。
 - `BackHandledFragment` 添加 `getBackHandleViewPager` 方法，方便在ViewPager中拦截Back键。
