@@ -18,6 +18,7 @@
 package com.github.ikidou.fragmentBackHandler;
 
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 
 public abstract class BackHandledFragment extends Fragment implements FragmentBackHandler {
     public BackHandledFragment() {
@@ -25,10 +26,17 @@ public abstract class BackHandledFragment extends Fragment implements FragmentBa
 
     @Override
     public final boolean onBackPressed() {
-        return interceptBackPressed() || Helper.handleBackPress(this);
+        return interceptBackPressed()
+                || (getBackHandleViewPager() == null
+                ? Helper.handleBackPress(this)
+                : Helper.handleBackPress(getBackHandleViewPager()));
     }
 
     public boolean interceptBackPressed() {
         return false;
+    }
+
+    public ViewPager getBackHandleViewPager() {
+        return null;
     }
 }

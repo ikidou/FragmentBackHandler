@@ -2,7 +2,7 @@
 
 [![Release](https://jitpack.io/v/ikidou/FragmentBackHandler.svg)](https://jitpack.io/#ikidou/FragmentBackHandler)
 
-FragmentBackHandler 是一个 Fragment拦截Back键的一个库，仅需两步即可搞定，同时支持多Fragment以及Fragment嵌套。
+FragmentBackHandler 是一个 Fragment拦截Back键的一个库，仅需两步即可搞定，同时支持ViewPager、多Fragment以及Fragment嵌套。
 
 详细内容参见Blog [两步搞定Fragment的返回键](http://www.jianshu.com/p/fff1ef649fc0)
 ## Download
@@ -15,7 +15,7 @@ allprojects {
 	}
 }
 dependencies {
-    compile 'com.github.ikidou:FragmentBackHandler:1.0'
+    compile 'com.github.ikidou:FragmentBackHandler:1.1'
 }
 ```
 
@@ -46,6 +46,7 @@ public class MyFragment extends Fragment implements FragmentBackHandler {
             // 如果不包含子Fragment
             // 或子Fragment没有外理back需求
             // 可如直接 return false;
+            // 注：如果Fragment/Activity 中使用ViewPager 用 viewPager 代替 this
             return FragmentBackHandler.Helper.handleBackPress(this);
         }
     }
@@ -68,8 +69,11 @@ public class MyFragment extends BackHandledFragment {
             return false;
         }
     }
+
+    //如果ViewPager中需要栏截back，可覆盖该方法。
+    @Override
+    public ViewPager getBackHandleViewPager() {
+        return null;
+    }
 }
 ```
-
-### 已知的问题：
-1. 在ViewPager中如果当前右面缓存的Fragment中想拦截Back键时，即使没有显示也会收到`onBackPressed()`。

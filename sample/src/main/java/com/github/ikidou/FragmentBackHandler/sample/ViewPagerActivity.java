@@ -25,17 +25,19 @@ import com.github.ikidou.fragmentBackHandler.FragmentBackHandler;
 
 public class ViewPagerActivity extends FragmentActivity {
     private long lastBackPress;
+    private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_viewpager);
-        ((ViewPager) findViewById(R.id.viewPager)).setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
+        viewPager = ((ViewPager) findViewById(R.id.viewPager));
+        viewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
     }
 
     @Override
     public void onBackPressed() {
-        if (!FragmentBackHandler.Helper.handleBackPress(this)) {
+        if (!FragmentBackHandler.Helper.handleBackPress(viewPager)) {
             if (System.currentTimeMillis() - lastBackPress < 1000) {
                 super.onBackPressed();
             } else {
