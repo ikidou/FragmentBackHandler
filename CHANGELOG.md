@@ -1,3 +1,6 @@
+## 2.1
+- 使用`Fragment.getUserVisibleHint()`来判断ViewPager中的Fragment是否可见，解决ViewPager中Fragment缓存导致的back拦截不准的问题，不用关心是否使用ViewPager。
+
 ## 2.0
 - FragmentBackHandler.Helper -> BackHandlerHelper
 

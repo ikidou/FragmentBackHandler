@@ -37,7 +37,7 @@ public class ViewPagerActivity extends FragmentActivity {
 
     @Override
     public void onBackPressed() {
-        if (!BackHandlerHelper.handleBackPress(viewPager)) {
+        if (!BackHandlerHelper.handleBackPress(this)) {
             if (System.currentTimeMillis() - lastBackPress < 1000) {
                 super.onBackPressed();
             } else {

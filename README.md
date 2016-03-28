@@ -6,7 +6,7 @@ FragmentBackHandler 是一个 Fragment拦截Back键的一个库，仅需两步�
 
 详细内容参见Blog [两步搞定Fragment的返回键](http://www.jianshu.com/p/fff1ef649fc0)
 ## Download 
-[jar](https://jitpack.io/com/github/ikidou/FragmentBackHandler/2.0/FragmentBackHandler-2.0.jar) or [source](https://jitpack.io/com/github/ikidou/FragmentBackHandler/2.0/FragmentBackHandler-2.0-sources.jar)
+[jar](https://jitpack.io/com/github/ikidou/FragmentBackHandler/2.1/FragmentBackHandler-2.1.jar) or [source](https://jitpack.io/com/github/ikidou/FragmentBackHandler/2.1/FragmentBackHandler-2.1-sources.jar)
 
 ```gradle
 allprojects {
@@ -16,7 +16,7 @@ allprojects {
 	}
 }
 dependencies {
-    compile 'com.github.ikidou:FragmentBackHandler:2.0'
+    compile 'com.github.ikidou:FragmentBackHandler:2.1'
 }
 ```
 
@@ -47,7 +47,8 @@ public class MyFragment extends Fragment implements FragmentBackHandler {
             // 如果不包含子Fragment
             // 或子Fragment没有外理back需求
             // 可如直接 return false;
-            // 注：如果Fragment/Activity 中使用ViewPager 用 viewPager 代替 this
+            // 注：如果Fragment/Activity 中可以使用ViewPager 代替 this
+            //
             return BackHandlerHelper.handleBackPress(this);
         }
     }
@@ -71,7 +72,8 @@ public class MyFragment extends BackHandledFragment {
         }
     }
 
-    //如果ViewPager中需要栏截back，可覆盖该方法。
+    // 如果ViewPager中需要栏截back，可覆盖该方法。
+    // 非必须，从2.1版本开始，即何使用了ViewPager也没有问题
     @Override
     public ViewPager getBackHandleViewPager() {
         return null;

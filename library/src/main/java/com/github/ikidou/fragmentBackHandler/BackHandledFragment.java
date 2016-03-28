@@ -36,6 +36,12 @@ public abstract class BackHandledFragment extends Fragment implements FragmentBa
         return false;
     }
 
+    /**
+     * 2.1 版本已经不在需要单独对ViewPager处理
+     *
+     * @deprecated
+     */
+    @Deprecated
     public ViewPager getBackHandleViewPager() {
         return null;
     }
