@@ -1,5 +1,7 @@
 # FragmentBackHandler
 
+**已过时，请使用AndroiX [OnBackPressedDispatcher](https://developer.android.com/reference/androidx/activity/OnBackPressedDispatcher)**
+
 [![Release](https://jitpack.io/v/ikidou/FragmentBackHandler.svg)](https://jitpack.io/#ikidou/FragmentBackHandler)
 
 FragmentBackHandler 是一个 Fragment拦截Back键的一个库，仅需两步即可搞定，同时支持ViewPager、多Fragment以及Fragment嵌套。
